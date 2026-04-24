@@ -440,13 +440,136 @@
         }
 
         /* A4 Document Form Styles */
+        .a4-doc, .a4-doc * {
+            font-family: Arial, sans-serif;
+        }
+
         .a4-doc {
             border: 3px solid #000;
             padding: 24px;
-            font-family: Arial, sans-serif;
             font-size: 12px;
             min-height: 297mm;
             background: white;
+        }
+
+        /* Logo upload area */
+        .logo-upload-area {
+            width: 90px;
+            height: 50px;
+            border: 2px dashed #aaa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 10px;
+            color: #888;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logo-upload-area img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-upload-area:hover {
+            border-color: #667eea;
+            background: #f5f5ff;
+        }
+
+        /* Image upload area (sketch / signature / stamp) */
+        .img-upload-area {
+            width: 100%;
+            min-height: 90px;
+            border: 2px dashed #aaa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            resize: both;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-upload-area img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .img-upload-area:hover {
+            border-color: #667eea;
+            background: #f5f5ff;
+        }
+
+        /* Sign + Stamp side-by-side block (bottom-right) */
+        .a4-sign-stamp-wrap {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .a4-sign-block, .a4-stamp-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .a4-sign-block .block-label,
+        .a4-stamp-block .block-label {
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sign-upload-area {
+            width: 100px;
+            height: 60px;
+            border: 2px dashed #aaa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            resize: both;
+            overflow: hidden;
+        }
+
+        .sign-upload-area img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .sign-upload-area:hover {
+            border-color: #667eea;
+            background: #f5f5ff;
+        }
+
+        .a4-name-input {
+            font-family: Arial, sans-serif;
+            border: none;
+            border-bottom: 1px solid #999;
+            font-size: 10px;
+            padding: 1px 4px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .a4-name-input:focus {
+            outline: none;
+            border-bottom-color: #667eea;
         }
 
         .a4-doc-header {
@@ -967,16 +1090,18 @@
                         <!-- Header -->
                         <div class="a4-doc-header">
                             <div class="company-left">
-                                <div>Romansys</div>
-                                <div>로만시스(주)</div>
+                                <div class="logo-upload-area" onclick="triggerUpload('logo-file-input', 'logo-preview')">
+                                    <img id="logo-preview" src="" alt="" style="display:none;">
+                                    <span id="logo-placeholder">기업로고<br>클릭하여 첨부</span>
+                                </div>
+                                <input type="file" id="logo-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('logo-file-input','logo-preview','logo-placeholder')">
                             </div>
                             <div class="title-center">
                                 <div class="main-title">WPS</div>
                                 <div style="font-size:11px;">(Welding Procedure Specification)</div>
                             </div>
                             <div class="company-right" style="text-align:right;">
-                                <div>로만시스(주)</div>
-                                <div>Rev. <input id="w-revision" class="a4-field-input" style="width:40px;" value="E"></div>
+                                <div style="font-size:11px; font-weight:bold; margin-bottom:2px;">Rev. <input id="w-revision" class="a4-field-input" style="width:40px;" value="E"></div>
                             </div>
                         </div>
 
@@ -1015,11 +1140,19 @@
                             <div class="a4-sketch-body">
                                 <div class="a4-sketch-cell">
                                     <div class="a4-sketch-label">이음부 형상</div>
-                                    <div class="a4-sketch-placeholder">[Joint Shape Drawing Area]</div>
+                                    <div class="img-upload-area" onclick="triggerUpload('joint-file-input','joint-preview')" style="min-height:100px;">
+                                        <img id="joint-preview" src="" alt="" style="display:none;">
+                                        <span id="joint-placeholder">📎 클릭하여 사진/그림 첨부</span>
+                                    </div>
+                                    <input type="file" id="joint-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('joint-file-input','joint-preview','joint-placeholder')">
                                 </div>
                                 <div class="a4-sketch-cell">
                                     <div class="a4-sketch-label">용접 순서 Welding Sequence</div>
-                                    <div class="a4-sketch-placeholder">[Welding Sequence Diagram]</div>
+                                    <div class="img-upload-area" onclick="triggerUpload('seq-file-input','seq-preview')" style="min-height:100px;">
+                                        <img id="seq-preview" src="" alt="" style="display:none;">
+                                        <span id="seq-placeholder">📎 클릭하여 사진/그림 첨부</span>
+                                    </div>
+                                    <input type="file" id="seq-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('seq-file-input','seq-preview','seq-placeholder')">
                                 </div>
                             </div>
                         </div>
@@ -1099,18 +1232,38 @@
                         </div>
 
                         <!-- Footer -->
-                        <div class="a4-footer">
+                        <div class="a4-footer" style="justify-content:space-between; align-items:flex-end;">
+                            <!-- Date (left) -->
                             <div>
-                                <div class="field-label" style="font-weight:bold;">책임 용접 조정자 Responsible welding coordinator</div>
-                                <div class="a4-sign-line"></div>
-                                <input id="w-coordinator" class="a4-field-input" style="width:160px;" placeholder="성명">
-                            </div>
-                            <div style="text-align:center;">
-                                <div class="a4-stamp-box">[Stamp/<br>Seal]</div>
-                            </div>
-                            <div style="text-align:right;">
-                                <div style="font-weight:bold;">날짜 Date</div>
+                                <div style="font-weight:bold; font-size:11px; margin-bottom:4px;">날짜 Date</div>
                                 <input id="w-date" type="date" class="a4-field-input" style="width:140px;">
+                            </div>
+
+                            <!-- Signature + Stamp side by side (right) -->
+                            <div>
+                                <div style="font-size:10px; font-weight:bold; margin-bottom:6px;">책임 용접 조정자 Responsible welding coordinator</div>
+                                <div class="a4-sign-stamp-wrap">
+                                    <!-- Signature -->
+                                    <div class="a4-sign-block">
+                                        <div class="block-label">서명 Signature</div>
+                                        <div class="sign-upload-area" onclick="triggerUpload('sign-file-input','sign-preview')">
+                                            <img id="sign-preview" src="" alt="" style="display:none;">
+                                            <span id="sign-placeholder">📎 첨부</span>
+                                        </div>
+                                        <input type="file" id="sign-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('sign-file-input','sign-preview','sign-placeholder')">
+                                        <input id="w-coordinator" class="a4-name-input" placeholder="성명">
+                                    </div>
+                                    <!-- Stamp -->
+                                    <div class="a4-stamp-block">
+                                        <div class="block-label">도장 Stamp</div>
+                                        <div class="sign-upload-area" onclick="triggerUpload('stamp-file-input','stamp-preview')">
+                                            <img id="stamp-preview" src="" alt="" style="display:none;">
+                                            <span id="stamp-placeholder">📎 첨부</span>
+                                        </div>
+                                        <input type="file" id="stamp-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('stamp-file-input','stamp-preview','stamp-placeholder')">
+                                        <input id="w-stamp-name" class="a4-name-input" placeholder="직책">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -1417,6 +1570,25 @@
             const msgDiv = document.getElementById('wpqr-message');
             msgDiv.innerHTML = `<div class="message ${type}">${msg}</div>`;
             setTimeout(() => msgDiv.innerHTML = '', 3000);
+        }
+
+        // Image upload helpers
+        function triggerUpload(inputId, previewId) {
+            document.getElementById(inputId).click();
+        }
+
+        function handleImgUpload(inputId, previewId, placeholderId) {
+            const file = document.getElementById(inputId).files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById(previewId);
+                const placeholder = document.getElementById(placeholderId);
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
         }
 
         // Initialize
