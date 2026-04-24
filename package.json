@@ -1,0 +1,12 @@
+{
+  "name": "wpqr-wps-management",
+  "version": "1.0.0",
+  "description": "WPQR 제작 관리 및 WPS 작성 앱",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "keywords": ["wpqr", "wps", "welding"],
+  "author": "",
+  "license": "MIT"
+}
