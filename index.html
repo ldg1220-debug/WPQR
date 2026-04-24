@@ -439,6 +439,211 @@
             user-select: none;
         }
 
+        /* A4 Document Form Styles */
+        .a4-doc {
+            border: 3px solid #000;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            min-height: 297mm;
+            background: white;
+        }
+
+        .a4-doc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        .a4-doc-header .company-left,
+        .a4-doc-header .company-right {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .a4-doc-header .title-center {
+            text-align: center;
+            flex: 1;
+        }
+
+        .a4-doc-header .title-center .main-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .a4-code-bar {
+            font-size: 11px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+        }
+
+        .a4-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .a4-info-grid .info-row {
+            margin-bottom: 4px;
+        }
+
+        .a4-field-input {
+            border: none;
+            border-bottom: 1px solid #999;
+            font-size: 11px;
+            padding: 1px 4px;
+            width: 130px;
+            font-family: Arial, sans-serif;
+        }
+
+        .a4-field-input:focus {
+            outline: none;
+            border-bottom-color: #667eea;
+        }
+
+        .a4-sketch-section {
+            border: 2px solid #000;
+            margin-bottom: 12px;
+        }
+
+        .a4-sketch-header {
+            background: #cff4fc;
+            border-bottom: 1px solid #000;
+            padding: 6px 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .a4-sketch-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .a4-sketch-cell {
+            padding: 12px;
+            background: #e8f8ff;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .a4-sketch-cell:first-child {
+            border-right: 1px solid #000;
+        }
+
+        .a4-sketch-label {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .a4-sketch-placeholder {
+            width: 100%;
+            height: 90px;
+            border: 2px dashed #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 10px;
+        }
+
+        .a4-detail-header {
+            background: #cff4fc;
+            border: 2px solid #000;
+            border-bottom: 0;
+            padding: 6px 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .a4-detail-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #000;
+            font-size: 10px;
+            margin-bottom: 12px;
+        }
+
+        .a4-detail-table th {
+            background: #cff4fc;
+            border: 1px solid #000;
+            padding: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .a4-detail-table td {
+            border: 1px solid #000;
+            padding: 2px;
+        }
+
+        .a4-detail-table input {
+            border: none;
+            width: 100%;
+            font-size: 10px;
+            padding: 2px 4px;
+            font-family: Arial, sans-serif;
+        }
+
+        .a4-detail-table input:focus {
+            outline: none;
+            background: #f0f4ff;
+        }
+
+        .a4-bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 11px;
+            margin-bottom: 16px;
+        }
+
+        .a4-bottom-grid .field-block {
+            margin-bottom: 6px;
+        }
+
+        .a4-bottom-grid .field-label {
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .a4-footer {
+            border-top: 2px solid #000;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 11px;
+        }
+
+        .a4-stamp-box {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .a4-sign-line {
+            width: 120px;
+            border-bottom: 1px solid #000;
+            height: 24px;
+        }
+
         .message {
             padding: 12px 16px;
             border-radius: 4px;
@@ -728,7 +933,10 @@
 
             <!-- A4 Editor View -->
             <div id="wps-editor" class="wps-editor">
-                <button class="btn btn-secondary" onclick="closeA4Editor()" style="margin-bottom: 20px;">← 대시보드로 돌아가기</button>
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+                    <button class="btn btn-secondary" onclick="closeA4Editor()">← 대시보드로 돌아가기</button>
+                    <button class="btn btn-primary" onclick="saveWPS()">💾 WPS 저장</button>
+                </div>
 
                 <div class="a4-container">
                     <div class="a4-sidebar">
@@ -752,80 +960,162 @@
                         </div>
                     </div>
 
-                    <div class="a4-page">
-                        <div class="a4-header">
-                            <h2>용접 기준 절차서 (WPS)</h2>
-                            <p>Welding Procedure Specification</p>
-                        </div>
+                    <!-- A4 Document -->
+                    <div class="a4-page" style="padding:0; overflow:auto;">
+                      <div class="a4-doc">
 
-                        <div class="a4-section">
-                            <h3>기본 정보</h3>
-                            <div class="a4-table" style="font-size: 11px;">
-                                <table style="width: 100%; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>WPS No.</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-wps-no">-</td>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Date</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-date">-</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Welder</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-welder">-</td>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Process</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-process">-</td>
-                                    </tr>
-                                </table>
+                        <!-- Header -->
+                        <div class="a4-doc-header">
+                            <div class="company-left">
+                                <div>Romansys</div>
+                                <div>로만시스(주)</div>
+                            </div>
+                            <div class="title-center">
+                                <div class="main-title">WPS</div>
+                                <div style="font-size:11px;">(Welding Procedure Specification)</div>
+                            </div>
+                            <div class="company-right" style="text-align:right;">
+                                <div>로만시스(주)</div>
+                                <div>Rev. <input id="w-revision" class="a4-field-input" style="width:40px;" value="E"></div>
                             </div>
                         </div>
 
-                        <div class="a4-section">
-                            <h3>재료 및 용가재</h3>
-                            <div class="a4-table">
-                                <table style="width: 100%; border-collapse: collapse;">
-                                    <tr>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Base Metal</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-base">-</td>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Filler Metal</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-filler">-</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Thickness</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-thickness">-</td>
-                                        <td style="border: 1px solid #999; padding: 4px;"><strong>Shielding Gas</strong></td>
-                                        <td style="border: 1px solid #999; padding: 4px;" id="a4-gas">-</td>
-                                    </tr>
-                                </table>
+                        <!-- Related Code -->
+                        <div class="a4-code-bar">
+                            관련 코드 <input id="w-related-code" class="a4-field-input" style="width:280px;" value="EN ISO 15614-1 LEVEL 2 : 2017">
+                        </div>
+
+                        <!-- Basic Info Grid -->
+                        <div class="a4-info-grid">
+                            <div>
+                                <div class="info-row"><strong>WPS No. :</strong> <input id="w-wps-no" class="a4-field-input" placeholder="WPS-2024-001"></div>
+                                <div class="info-row"><strong>WPQR No. :</strong> <input id="w-pqr-no" class="a4-field-input" placeholder="PQR-2024-001"></div>
+                                <div class="info-row"><strong>제조사 manufacturer :</strong> <input id="w-manufacturer" class="a4-field-input" placeholder="로만시스(주)"></div>
+                                <div class="info-row"><strong>용접 방법 Weld Type :</strong> <input id="w-weld-type" class="a4-field-input" placeholder="Butt Weld"></div>
+                                <div class="info-row"><strong>이음 형태 Joint Type :</strong> <input id="w-joint-type" class="a4-field-input" placeholder="Single V"></div>
+                                <div class="info-row"><strong>용접자세 Welding Position :</strong> <input id="w-position" class="a4-field-input" placeholder="PA (1G)"></div>
+                                <div class="info-row"><strong>용접 이행 모드 Metal Transfer :</strong> <input id="w-transfer" class="a4-field-input" placeholder="Spray"></div>
+                            </div>
+                            <div>
+                                <div class="info-row"><strong>용접준비 및 청결 방법 Preparation :</strong> <input id="w-preparation" class="a4-field-input" placeholder="Grinding/Cleaning"></div>
+                                <div class="info-row"><strong>모재 사양 Parent Material :</strong></div>
+                                <div class="info-row" style="margin-left:12px;">Group_1.1 ~ 1.4 [ISO/TR 15608 : 2017]</div>
+                                <div class="info-row"><strong>모재 두께 Thickness(mm) :</strong>
+                                    <input id="w-thick-min" class="a4-field-input" style="width:50px;" placeholder="3"> ~
+                                    <input id="w-thick-max" class="a4-field-input" style="width:50px;" placeholder="20">
+                                </div>
+                                <div class="info-row"><strong>목 두께 Throat Thickness(mm) :</strong> <input id="w-throat" class="a4-field-input" placeholder="-"></div>
+                                <div class="info-row"><strong>파이프 직경 Outside Pipe Dia.(mm) :</strong> <input id="w-pipe-dia" class="a4-field-input" placeholder="-"></div>
                             </div>
                         </div>
 
-                        <div class="a4-section">
-                            <h3>용접 조건</h3>
-                            <table class="a4-table">
-                                <thead>
-                                    <tr>
-                                        <th>Pass</th>
-                                        <th>Current (A)</th>
-                                        <th>Voltage (V)</th>
-                                        <th>Speed (cm/min)</th>
-                                        <th>Heat Input</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="a4-passes">
-                                    <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <!-- Weld Preparation Details -->
+                        <div class="a4-sketch-section">
+                            <div class="a4-sketch-header">용접 이음부 상세 Weld Preparation Details (Sketch)</div>
+                            <div class="a4-sketch-body">
+                                <div class="a4-sketch-cell">
+                                    <div class="a4-sketch-label">이음부 형상</div>
+                                    <div class="a4-sketch-placeholder">[Joint Shape Drawing Area]</div>
+                                </div>
+                                <div class="a4-sketch-cell">
+                                    <div class="a4-sketch-label">용접 순서 Welding Sequence</div>
+                                    <div class="a4-sketch-placeholder">[Welding Sequence Diagram]</div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="drag-block" id="signatureBlock" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
-                            🖊️ 서명 및 도장을 드래그하여 놓으세요
+                        <!-- Welding Details Table -->
+                        <div class="a4-detail-header">용접 상세 Welding Details</div>
+                        <table class="a4-detail-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:5%;">Pass</th>
+                                    <th>용접 공정<br>Process</th>
+                                    <th>용가재 크기<br>Filler Size</th>
+                                    <th>전류<br>Current(A)</th>
+                                    <th>전압<br>Voltage(V)</th>
+                                    <th>극성<br>Polarity</th>
+                                    <th>속도<br>Speed</th>
+                                    <th>입열량<br>Heat Input</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wps-passes-table">
+                                <tr>
+                                    <td style="text-align:center;">1</td>
+                                    <td><input type="text" class="wp-process" placeholder="135"></td>
+                                    <td><input type="text" class="wp-filler-size" placeholder="1.2mm"></td>
+                                    <td><input type="number" class="wp-current" placeholder="200" oninput="calcWPSHeatInput(this)"></td>
+                                    <td><input type="number" class="wp-voltage" placeholder="24" oninput="calcWPSHeatInput(this)"></td>
+                                    <td><input type="text" class="wp-polarity" placeholder="DC+"></td>
+                                    <td><input type="number" class="wp-speed" placeholder="30" oninput="calcWPSHeatInput(this)"></td>
+                                    <td><span class="wp-hi">0.00</span> kJ/cm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-secondary btn-sm" onclick="addWPSPass()" style="margin-bottom:16px;">+ 패스 추가</button>
+
+                        <!-- Filler Metal & Other Info -->
+                        <div class="a4-bottom-grid">
+                            <div>
+                                <div class="field-block">
+                                    <div class="field-label">용가재 사양 Filler Metal Designation</div>
+                                    <input id="w-filler-metal" class="a4-field-input" style="width:200px;" placeholder="SG2 / ER70S-6">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">보호가스 Gas/Flux</div>
+                                    <input id="w-gas-flux" class="a4-field-input" style="width:200px;" placeholder="Ar+CO2 (82/18)">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">가스 유량 Gas Flow Rate</div>
+                                    <input id="w-gas-flow" class="a4-field-input" style="width:200px;" placeholder="15~20 L/min">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">텅스텐 전극 Tungsten Electrode</div>
+                                    <input id="w-tungsten" class="a4-field-input" style="width:200px;" placeholder="-">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="field-block">
+                                    <div class="field-label">※ 기타 정보 Other information</div>
+                                    <input id="w-other-info" class="a4-field-input" style="width:200px;" placeholder="Weaving: N/A">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">예열온도 Preheat Temperature</div>
+                                    <input id="w-preheat" class="a4-field-input" style="width:200px;" placeholder="≥5°C">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">층간 온도 Interpass Temperature</div>
+                                    <input id="w-interpass" class="a4-field-input" style="width:200px;" placeholder="None">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">후열처리 PWHT</div>
+                                    <input id="w-pwht" class="a4-field-input" style="width:200px;" placeholder="N/A">
+                                </div>
+                                <div class="field-block">
+                                    <div class="field-label">뒷면 용접/백킹 Back Gouging/Backing</div>
+                                    <input id="w-backing" class="a4-field-input" style="width:200px;" placeholder="-">
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- Footer -->
+                        <div class="a4-footer">
+                            <div>
+                                <div class="field-label" style="font-weight:bold;">책임 용접 조정자 Responsible welding coordinator</div>
+                                <div class="a4-sign-line"></div>
+                                <input id="w-coordinator" class="a4-field-input" style="width:160px;" placeholder="성명">
+                            </div>
+                            <div style="text-align:center;">
+                                <div class="a4-stamp-box">[Stamp/<br>Seal]</div>
+                            </div>
+                            <div style="text-align:right;">
+                                <div style="font-weight:bold;">날짜 Date</div>
+                                <input id="w-date" type="date" class="a4-field-input" style="width:140px;">
+                            </div>
+                        </div>
+
+                      </div><!-- /.a4-doc -->
+                    </div><!-- /.a4-page -->
                 </div>
             </div>
         </div>
@@ -981,6 +1271,8 @@
         }
 
         // WPS Editor Functions
+        let wpsPassCount = 1;
+
         function openA4Editor() {
             document.getElementById('wps-dashboard-view').style.display = 'none';
             document.querySelector('.quick-start').style.display = 'none';
@@ -994,40 +1286,131 @@
         }
 
         function startNewWPS() {
-            alert('새 WPS 작성 기능은 준비 중입니다.');
+            openA4Editor();
+            clearWPSForm();
         }
 
         function viewWPSList() {
-            alert('WPS 목록 보기 기능은 준비 중입니다.');
+            showTab('tab-wpqr-list');
+            document.querySelectorAll('.tab-button').forEach((b, i) => {
+                b.classList.remove('active');
+                if (i === 1) b.classList.add('active');
+            });
+        }
+
+        function clearWPSForm() {
+            ['w-wps-no','w-pqr-no','w-manufacturer','w-weld-type','w-joint-type',
+             'w-position','w-transfer','w-preparation','w-thick-min','w-thick-max',
+             'w-throat','w-pipe-dia','w-filler-metal','w-gas-flux','w-gas-flow',
+             'w-tungsten','w-other-info','w-preheat','w-interpass','w-pwht',
+             'w-backing','w-coordinator'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            wpsPassCount = 1;
+            document.getElementById('wps-passes-table').innerHTML = makeWPSPassRow(1, {});
+        }
+
+        function makeWPSPassRow(num, data) {
+            return `<tr>
+                <td style="text-align:center;">${num}</td>
+                <td><input type="text" class="wp-process" value="${data.process||''}"></td>
+                <td><input type="text" class="wp-filler-size" value="${data.fillerSize||''}"></td>
+                <td><input type="number" class="wp-current" value="${data.amp||''}" oninput="calcWPSHeatInput(this)"></td>
+                <td><input type="number" class="wp-voltage" value="${data.volt||''}" oninput="calcWPSHeatInput(this)"></td>
+                <td><input type="text" class="wp-polarity" value="${data.polarity||'DC+'}"></td>
+                <td><input type="number" class="wp-speed" value="${data.speed||''}" oninput="calcWPSHeatInput(this)"></td>
+                <td><span class="wp-hi">${data.hi||'0.00'}</span> kJ/cm</td>
+            </tr>`;
+        }
+
+        function addWPSPass() {
+            wpsPassCount++;
+            document.getElementById('wps-passes-table').insertAdjacentHTML('beforeend', makeWPSPassRow(wpsPassCount, {}));
+        }
+
+        function calcWPSHeatInput(el) {
+            const row = el.closest('tr');
+            const amp = parseFloat(row.querySelector('.wp-current').value) || 0;
+            const volt = parseFloat(row.querySelector('.wp-voltage').value) || 0;
+            const speed = parseFloat(row.querySelector('.wp-speed').value) || 1;
+            row.querySelector('.wp-hi').textContent = ((amp * volt * 0.06) / speed).toFixed(2);
+        }
+
+        function saveWPS() {
+            const wpsNo = document.getElementById('w-wps-no').value.trim();
+            if (!wpsNo) {
+                alert('WPS No.를 입력하세요.');
+                return;
+            }
+
+            const passes = [];
+            document.querySelectorAll('#wps-passes-table tr').forEach((row, i) => {
+                passes.push({
+                    pass: i + 1,
+                    process: row.querySelector('.wp-process').value,
+                    fillerSize: row.querySelector('.wp-filler-size').value,
+                    amp: row.querySelector('.wp-current').value,
+                    volt: row.querySelector('.wp-voltage').value,
+                    polarity: row.querySelector('.wp-polarity').value,
+                    speed: row.querySelector('.wp-speed').value,
+                    hi: row.querySelector('.wp-hi').textContent
+                });
+            });
+
+            const wpsRecord = {
+                id: Date.now(),
+                wpsNo,
+                pqrNo: document.getElementById('w-pqr-no').value,
+                manufacturer: document.getElementById('w-manufacturer').value,
+                weldType: document.getElementById('w-weld-type').value,
+                jointType: document.getElementById('w-joint-type').value,
+                position: document.getElementById('w-position').value,
+                metalTransfer: document.getElementById('w-transfer').value,
+                preparation: document.getElementById('w-preparation').value,
+                thickMin: document.getElementById('w-thick-min').value,
+                thickMax: document.getElementById('w-thick-max').value,
+                throat: document.getElementById('w-throat').value,
+                pipeDia: document.getElementById('w-pipe-dia').value,
+                fillerMetal: document.getElementById('w-filler-metal').value,
+                gasFlux: document.getElementById('w-gas-flux').value,
+                gasFlow: document.getElementById('w-gas-flow').value,
+                tungsten: document.getElementById('w-tungsten').value,
+                preheat: document.getElementById('w-preheat').value,
+                interpass: document.getElementById('w-interpass').value,
+                pwht: document.getElementById('w-pwht').value,
+                backing: document.getElementById('w-backing').value,
+                otherInfo: document.getElementById('w-other-info').value,
+                coordinator: document.getElementById('w-coordinator').value,
+                date: document.getElementById('w-date').value,
+                passes
+            };
+
+            wpsDb.push(wpsRecord);
+            alert(`WPS [${wpsNo}]가 저장되었습니다.`);
         }
 
         function editWPS(id) {
             const record = db.find(r => r.id === id);
             if (!record) return;
 
-            document.getElementById('a4-wps-no').textContent = record.pqrNo;
-            document.getElementById('a4-date').textContent = record.date;
-            document.getElementById('a4-welder').textContent = record.welder || '-';
-            document.getElementById('a4-process').textContent = record.process;
-            document.getElementById('a4-base').textContent = record.base || '-';
-            document.getElementById('a4-filler').textContent = record.filler || '-';
-            document.getElementById('a4-thickness').textContent = record.grade || '-';
-            document.getElementById('a4-gas').textContent = record.gas || '-';
+            openA4Editor();
 
-            let passesHtml = '';
-            record.passes.forEach(p => {
-                passesHtml += `<tr>
-                    <td>${p.pass}</td>
-                    <td>${p.amp}</td>
-                    <td>${p.volt}</td>
-                    <td>${p.speed}</td>
-                    <td>${p.hi}</td>
-                </tr>`;
-            });
-            document.getElementById('a4-passes').innerHTML = passesHtml;
+            document.getElementById('w-pqr-no').value = record.pqrNo || '';
+            document.getElementById('w-weld-type').value = record.process || '';
+            document.getElementById('w-joint-type').value = record.joint || '';
+            document.getElementById('w-thick-min').value = '';
+            document.getElementById('w-thick-max').value = '';
+            document.getElementById('w-filler-metal').value = record.filler || '';
+            document.getElementById('w-gas-flux').value = record.gas || '';
+            document.getElementById('w-date').value = record.date || '';
+
+            wpsPassCount = record.passes.length;
+            document.getElementById('wps-passes-table').innerHTML = record.passes.map((p, i) =>
+                makeWPSPassRow(i + 1, { amp: p.amp, volt: p.volt, speed: p.speed, hi: p.hi })
+            ).join('');
 
             document.getElementById('tab-wps-editor').scrollIntoView();
-            openA4Editor();
         }
 
         function showMessage(msg, type) {
@@ -1036,19 +1419,10 @@
             setTimeout(() => msgDiv.innerHTML = '', 3000);
         }
 
-        function handleDragOver(e) {
-            e.preventDefault();
-            e.target.style.background = '#f0f0f0';
-        }
-
-        function handleDrop(e) {
-            e.preventDefault();
-            e.target.style.background = '';
-            alert('서명 및 도장이 추가되었습니다.');
-        }
-
         // Initialize
+        let wpsDb = [];
         document.getElementById('pqrDate').valueAsDate = new Date();
+        document.getElementById('w-date').valueAsDate = new Date();
     </script>
 </body>
 </html>
