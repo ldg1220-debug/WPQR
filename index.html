@@ -741,10 +741,8 @@
         }
 
         .a4-footer {
-            border-top: 2px solid #000;
-            padding-top: 12px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: flex-end;
             font-size: 11px;
         }
@@ -1232,33 +1230,35 @@
                         </div>
 
                         <!-- Footer -->
-                        <div class="a4-footer" style="flex-direction:column; align-items:flex-end; gap:6px;">
-                            <div style="font-size:11px; font-weight:bold;">책임 용접 조정자 Responsible welding coordinator</div>
-                            <div style="font-size:11px;">성명 NAME : <input id="w-coordinator" class="a4-field-input" style="width:160px;" placeholder="이름 입력"></div>
+                        <div class="a4-footer">
+                            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+                                <div style="font-size:11px; font-weight:bold;">책임 용접 조정자 Responsible welding coordinator</div>
+                                <div style="font-size:11px;">성명 NAME : <input id="w-coordinator" class="a4-field-input" style="width:160px;" placeholder="이름 입력"></div>
 
-                            <!-- 서명 + 도장 나란히 -->
-                            <div style="display:flex; gap:0; border: 1px solid #000;">
-                                <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 20px; border-right:1px solid #000; min-width:120px;">
-                                    <div style="font-size:11px; font-weight:bold;">서명</div>
-                                    <div class="sign-upload-area" onclick="triggerUpload('sign-file-input','sign-preview')" style="width:90px; height:60px;">
-                                        <img id="sign-preview" src="" alt="" style="display:none;">
-                                        <span id="sign-placeholder">📎 첨부</span>
+                                <!-- 서명 + 도장 나란히 -->
+                                <div style="display:flex; gap:0; border:1px solid #000;">
+                                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 20px; border-right:1px solid #000; min-width:120px;">
+                                        <div style="font-size:11px; font-weight:bold;">서명</div>
+                                        <div class="sign-upload-area" onclick="triggerUpload('sign-file-input','sign-preview')" style="width:90px; height:60px;">
+                                            <img id="sign-preview" src="" alt="" style="display:none;">
+                                            <span id="sign-placeholder">📎 첨부</span>
+                                        </div>
+                                        <input type="file" id="sign-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('sign-file-input','sign-preview','sign-placeholder')">
                                     </div>
-                                    <input type="file" id="sign-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('sign-file-input','sign-preview','sign-placeholder')">
-                                </div>
-                                <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 20px; min-width:120px;">
-                                    <div style="font-size:11px; font-weight:bold;">도장 스탬프</div>
-                                    <div class="sign-upload-area" onclick="triggerUpload('stamp-file-input','stamp-preview')" style="width:90px; height:60px;">
-                                        <img id="stamp-preview" src="" alt="" style="display:none;">
-                                        <span id="stamp-placeholder">📎 첨부</span>
+                                    <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 20px; min-width:120px;">
+                                        <div style="font-size:11px; font-weight:bold;">도장 스탬프</div>
+                                        <div class="sign-upload-area" onclick="triggerUpload('stamp-file-input','stamp-preview')" style="width:90px; height:60px;">
+                                            <img id="stamp-preview" src="" alt="" style="display:none;">
+                                            <span id="stamp-placeholder">📎 첨부</span>
+                                        </div>
+                                        <input type="file" id="stamp-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('stamp-file-input','stamp-preview','stamp-placeholder')">
                                     </div>
-                                    <input type="file" id="stamp-file-input" accept="image/*" style="display:none;" onchange="handleImgUpload('stamp-file-input','stamp-preview','stamp-placeholder')">
                                 </div>
-                            </div>
 
-                            <!-- 날짜 -->
-                            <div style="font-size:11px; font-weight:bold; text-align:center; width:100%;">
-                                날짜 DATE : <input id="w-date" type="date" class="a4-field-input" style="width:140px;">
+                                <!-- 날짜 + 하단 구분선 -->
+                                <div style="font-size:11px; font-weight:bold; padding-bottom:8px; border-bottom:2px solid #000; width:100%; text-align:right;">
+                                    날짜 DATE : <input id="w-date" type="date" class="a4-field-input" style="width:140px;">
+                                </div>
                             </div>
                         </div>
 
